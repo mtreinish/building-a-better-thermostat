@@ -1,0 +1,164 @@
+\documentclass[aspectratio=169,11pt,hyperref={colorlinks=true}]{beamer}
+\usetheme{boxes}
+\setbeamertemplate{navigation symbols}{}
+\definecolor{openstack}{RGB}{149,0,4}
+\setbeamercolor{titlelike}{fg=openstack}
+\setbeamercolor{structure}{fg=openstack}
+\hypersetup{colorlinks,urlcolor=openstack}
+\setbeamertemplate{footline}[frame number]
+% Inserting graphics
+\usepackage{graphicx}
+% Side-by-side figures, etc
+\usepackage{subfigure}
+% Code snippits
+\usepackage{listings}
+% Color stuff
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{tikz}
+\newcommand\RBox[1]{%
+  \tikz\node[draw,rounded corners,align=center,] {#1};%
+}
+\usepackage{hyperref}
+%\usecolortheme{buzz}
+%\usecolortheme{wolverine}
+%\usetheme{Boadilla}
+\usepackage[T1]{fontenc}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{%
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{openstack},  % comment style
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+%  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stringstyle=\color{openstack},   % string literal style
+}
+
+\setbeamerfont{caption}{series=\normalfont,size=\fontsize{6}{8}}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\floatsep}{0pt}
+
+\author[Matthew Treinish]{%
+    \texorpdfstring{%
+        \centering
+        Matthew Treinish\\
+        \href{mailto:mtreinish@kortar.org}{mtreinish@kortar.org}\\
+        \texttt{mtreinish on Freenode}
+   }
+   {Matthew Treinish}
+}
+\date{July 15, 2016}
+
+\title[Building a Better Thermostat
+\hspace{2em}\insertframenumber/\inserttotalframenumber]{Building a Better Thermostat}
+
+\begin{document}
+
+{%
+\setbeamertemplate{footline}{}
+\begin{frame}[noframenumbering]
+    \setbeamercolor{titlelike}{fg=white}
+    \setbeamercolor{structure}{fg=white}
+    \setbeamercolor{normal text}{fg=white}
+    \hypersetup{colorlinks,urlcolor=white}
+    \setbeamercolor{author}{fg=white}
+    \setbeamercolor{date}{fg=white}
+    \setbeamercolor{background}{bg=openstack}
+    \titlepage{}
+    \centering
+    \href{https://github.com/mtreinish/building-a-better-thermostat}{https://github.com/mtreinish/building-a-better-thermostat}
+\end{frame}
+}
+
+
+\section{My Apartment}
+\begin{frame}
+    \frametitle{Poor Cooling}
+\end{frame}
+
+\section{Thermostats}
+\begin{frame}
+    \frametitle{What do I mean by Open Source QA}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Smart Thermostats}
+\end{frame}
+
+
+\section{Builing a Thermostat}
+
+\begin{frame}
+    \frametitle{Controlling the AC}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bedroom Temperature Sensing}
+\end{frame}
+
+\begin{frame}
+    \frametitle{DallasMQTT}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cycle Time}
+    \begin{center}
+        \includegraphics[width=.75\textwidth]{short_cycle.png}
+    \end{center}
+    \begin{itemize}
+        \item Bedroom on for 8 min. and off for 4 min.
+        \item Living Room on for 4 min. off for 2 min.
+    \end{itemize}
+\end{frame}
+
+\section{Automation}
+\begin{frame}
+    \frametitle{Starting to Automate}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Location Tracking}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Owntracks}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}
+    \frametitle{Future Work}
+\end{frame}
+
+\section{More Information}
+\begin{frame}
+\frametitle{Where to get more information}
+    \begin{itemize}
+        \item Blog Post \href{http://blog.kortar.org/?p=319}{http://blog.kortar.org/?p=319}
+        \item \href{https://home-assistant.io/}{https://home-assistant.io/}
+        \item
+    \end{itemize}
+\end{frame}
+
+\section{Questions}
+\begin{frame}
+\frametitle{Questions?}
+\end{frame}
+
+\end{document}
