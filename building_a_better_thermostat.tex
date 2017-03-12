@@ -63,29 +63,29 @@
    }
    {Matthew Treinish}
 }
-\date{July 15, 2016}
+\date{March 18, 2017}
 
 \title[Building a Better Thermostat
 \hspace{2em}\insertframenumber/\inserttotalframenumber]{Building a Better Thermostat}
 
 \begin{document}
 
-{%
-\setbeamertemplate{footline}{}
-\begin{frame}[noframenumbering]
-    \setbeamercolor{titlelike}{fg=white}
-    \setbeamercolor{structure}{fg=white}
-    \setbeamercolor{normal text}{fg=white}
-    \hypersetup{colorlinks,urlcolor=white}
-    \setbeamercolor{author}{fg=white}
-    \setbeamercolor{date}{fg=white}
-    \setbeamercolor{background}{bg=openstack}
-    \titlepage{}
-    \centering
-    \href{https://github.com/mtreinish/building-a-better-thermostat}{https://github.com/mtreinish/building-a-better-thermostat}
-\end{frame}
-}
-
+%{%
+%\setbeamertemplate{footline}{}
+%\begin{frame}[noframenumbering]
+%    \setbeamercolor{titlelike}{fg=white}
+%    \setbeamercolor{structure}{fg=white}
+%    \setbeamercolor{normal text}{fg=white}
+%    \hypersetup{colorlinks,urlcolor=white}
+%    \setbeamercolor{author}{fg=white}
+%    \setbeamercolor{date}{fg=white}
+%    \setbeamercolor{background}{bg=openstack}
+%    \titlepage{}
+%    \centering
+%    \href{https://github.com/mtreinish/building-a-better-thermostat}{https://github.com/mtreinish/building-a-better-thermostat}
+%\end{frame}
+%}
+\titlepage
 
 \section{My Apartment}
 \begin{frame}
@@ -97,7 +97,9 @@
 
 \begin{frame}
     \frametitle{Poor Cooling}
-    \includegraphics[width=.75\textwidth]{AC_unit.jpeg}
+    \begin{center}
+        \includegraphics[width=.75\textwidth]{AC_unit.jpeg}
+    \end{center}
 \end{frame}
 
 \section{Builing a Thermostat}
@@ -125,7 +127,30 @@
     \begin{itemize}
         \item Can't take apart the AC (I don't own it)
         \item No identifying information for the AC
-        \item 
+        \item Control via power (use a relay to turn on and off)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{columns}[T]
+        \begin{column}{.48\textwidth}
+            \begin{itemize}
+                \item Use Z-Wave outlet to control
+                \item
+            \end{itemize}
+        \end{column}
+        \begin{column}{.48\textwidth}       
+            \includegraphics[width=.8\textwidth]{aeotec-ss6.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sensing the Living Room Temperature}
+    \begin{itemize}
+        \item Wireless sensor 
+        \item Leverage Z-Wave network
+        \item Got a 
     \end{itemize}
 \end{frame}
 
@@ -134,8 +159,8 @@
     \begin{columns}[T]
         \begin{column}{.48\textwidth}
             \begin{itemize}
-                \item Track bedroom temperature and data closet
-                \item 
+                \item Track both bedroom and ``data`` closet temperatures
+                \item Leverage spare raspberry pi sitting in ``data'' closet
             \end{itemize}
         \end{column}
         \begin{column}{.48\textwidth}
@@ -147,12 +172,18 @@
 
 \begin{frame}
     \frametitle{DallasMQTT}
+    \begin{itemize}
+        \item Framework for polling sensors and pushing results on MQTT
+        \item Handles an arbitrary number of sensors
+        \item Currently only supports Dallas 1 wire from w1\_therm linux driver
+        \item Written in python
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Cycle Time}
     \begin{center}
-        \includegraphics[width=.75\textwidth]{short_cycle.png}
+        \includegraphics[height=.75\textheight]{short_cycle.png}
     \end{center}
     \begin{itemize}
         \item Bedroom on for 8 min. and off for 4 min.
@@ -177,6 +208,11 @@
 \section{Conclusions}
 \begin{frame}
     \frametitle{Future Work}
+    \begin{itemize}
+        \item More Sensors
+        \item More automation
+        \item Fix power usage collection
+    \end{itemize}
 \end{frame}
 
 \section{More Information}
