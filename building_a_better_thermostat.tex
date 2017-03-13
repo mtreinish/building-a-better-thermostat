@@ -181,7 +181,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Cycle Time}
+    \frametitle{Short Cycle Time}
     \begin{center}
         \includegraphics[height=.75\textheight]{short_cycle.png}
     \end{center}
@@ -191,9 +191,34 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Corrected Cycle Time}
+    \begin{center}
+        \includegraphics[height=.75\textheight]{long_cycle.png}
+    \end{center}
+    \begin{itemize}
+        \item Bedroom on for 20 min. and off for 21 min.
+        \item Living Room on for 17 min. off for 29 min.
+    \end{itemize}
+\end{frame}
+
 \section{Automation}
 \begin{frame}
-    \frametitle{Starting to Automate}
+\frametitle{Starting to Automate}
+%    \begin{lstlisting}
+      alias: Set Living Room AC to 30 C when asleep
+      trigger:
+        platform: time
+        after: '12:30:00'
+      condition:
+        - condition: time
+          before: '09:30:00'
+      action:
+        service: thermostat.set\_temperature
+        entity\_id: thermostat.living\_room
+        data:
+          temperature: 28
+%    \end{lstlisting}
 \end{frame}
 
 
