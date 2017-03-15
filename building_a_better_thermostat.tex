@@ -95,7 +95,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Poor Cooling}
+    \frametitle{AC Units}
     \begin{center}
         \includegraphics[width=.75\textwidth]{AC_unit.jpeg}
     \end{center}
@@ -106,21 +106,13 @@
 \begin{frame}
     \frametitle{Thermostat}
     \begin{itemize}
-        \item Closed Loop control device for heating and/or cooling system
-        \item Senses current temperature and 
+        \item Closed Loop control device
+        \item 1 input temperature sensor
+        \item 1 output for controlling heating and/or cooling system
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Home Assistant}
-    \begin{itemize}
-        \item Open Source Home Automation Platform
-        \item Written in Python 3
-        \item Has support for over 600 different components
-        \item Runs locally (with all data locally)
-    \end{itemize}
-\end{frame}
-
+\subsection{Living Room Hardware}
 \begin{frame}
     \frametitle{Controlling the AC}
     \begin{itemize}
@@ -149,10 +141,11 @@
     \begin{itemize}
         \item Wireless sensor 
         \item Leverage Z-Wave network
-        \item Got a 
+        \item 
     \end{itemize}
 \end{frame}
 
+\subsection{Bedroom Temperature Sensing}
 \begin{frame}
     \frametitle{Bedroom Temperature Sensing}
     \begin{columns}[T]
@@ -160,6 +153,7 @@
             \begin{itemize}
                 \item Track both bedroom and ``data`` closet temperatures
                 \item Leverage spare raspberry pi sitting in ``data'' closet
+                \item Went with dallas 1 wire temperature sensors
             \end{itemize}
         \end{column}
         \begin{column}{.48\textwidth}
@@ -169,15 +163,50 @@
     \end{columns}
 \end{frame}
 
+\subsection{Software}
+\begin{frame}
+    \frametitle{Home Assistant}
+    \begin{itemize}
+        \item Open Source Home Automation Platform
+        \item Written in Python 3
+        \item Has support for over 600 different components
+        \item Runs locally (with all data locally)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Setting up thermostat in Home Assistant}
+    \begin{columns}[T]
+        \begin{column}{.48\textwidth}
+%            \href{https://home-assistant.io/components/#climate}{https://home-assistant.io/components/#climate}
+            \centering
+            \includegraphics[width=\textwidth]{thermostat_components.png}
+        \end{column}
+        \begin{column}{.48\textwidth}
+            \begin{itemize}
+                \item Use the generic thermostat component
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \includegraphics[width=\textwidth]{Control_panel.png}
+    \end{center}
+\end{frame}
+
 \begin{frame}
     \frametitle{DallasMQTT}
     \begin{itemize}
         \item Framework for polling sensors and pushing results on MQTT
         \item Handles an arbitrary number of sensors
-        \item Currently only supports Dallas 1 wire from w1\_therm linux driver
+        \item Currently only supports Dallas 1 wire temperature sensors from w1\_therm linux driver
         \item Written in python
     \end{itemize}
 \end{frame}
+
+\section{Initial Issues}
 
 \begin{frame}
     \frametitle{Short Cycle Time}
@@ -220,13 +249,47 @@
 %    \end{lstlisting}
 \end{frame}
 
-
+\subsection{Location based rules}
 \begin{frame}
     \frametitle{Location Tracking}
+    \begin{itemize}
+        \item Start writing rules based on my location
+        \item Set temperature higher when I'm not home
+        \item Pre-cool
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Owntracks}
+    \begin{columns}[T]
+        \begin{column}{.48\textwidth}
+            \begin{itemize}
+                \item Open Source iOS and Android app for reporting location over MQTT
+                \item Enables you to use either a private MQTT broker or public service
+                \item Home assistant component to use the data
+            \end{itemize}
+        \end{column}
+        \begin{column}{.48\textwidth}
+            \centering
+            \includegraphics[width=.8\textwidth]{ipad-public-map.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Location Based Automation Rules}
+    alias: Set Living Room AC to 26 C when leaving starbucks route 9
+    trigger:
+      platform: state
+      entity\_id: device\_tracker.myphone
+      from: 'Starbucks Route 9'
+    action:
+      - delay:
+          minutes: 5
+      - service: climate.set\_temperature
+        entity\_id: climate.living\_room
+        data:
+          temperature: 26
 \end{frame}
 
 \section{Conclusions}
@@ -246,6 +309,7 @@
         \item Blog Post \href{http://blog.kortar.org/?p=319}{http://blog.kortar.org/?p=319}
         \item \href{https://home-assistant.io/}{https://home-assistant.io/}
         \item \href{https://github.com/mtreinish/dallasMQTT}{https://github.com/mtreinish/dallasMQTT}
+        \item \href{http://owntracks.org/}{http://owntracks.org/}
     \end{itemize}
 \end{frame}
 
