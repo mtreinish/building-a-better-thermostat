@@ -12,6 +12,7 @@
 \usepackage{subfigure}
 % Code snippits
 \usepackage{listings}
+\usepackage{minted}
 % Color stuff
 \usepackage{color}
 \usepackage{amsmath}
@@ -47,6 +48,7 @@
   showtabs=false,                  % show tabs within strings adding particular underscores
   stringstyle=\color{openstack},   % string literal style
 }
+
 
 \setbeamerfont{caption}{series=\normalfont,size=\fontsize{6}{8}}
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
@@ -247,9 +249,13 @@
 \end{frame}
 
 \section{Automation}
-\begin{frame}
-\frametitle{Starting to Automate}
-%    \begin{lstlisting}
+\begin{frame}[fragile=singleslide]
+    \frametitle{Starting to Automate}
+    \begin{minted}[
+      gobble=4,
+      frame=single,
+      linenos
+    ]{yaml}
       alias: Set Living Room AC to 30 C when asleep
       trigger:
         platform: time
@@ -258,11 +264,11 @@
         - condition: time
           before: '09:30:00'
       action:
-        service: thermostat.set\_temperature
-        entity\_id: thermostat.living\_room
+        service: thermostat.set_temperature
+        entity_id: thermostat.living_room
         data:
-          temperature: 28
-%    \end{lstlisting}
+          temperature: 30
+    \end{minted}
 \end{frame}
 
 \subsection{Location based rules}
@@ -292,20 +298,26 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile=singleslide]
     \frametitle{Location Based Automation Rules}
-    alias: Set Living Room AC to 26 C when leaving starbucks route 9
-    trigger:
-      platform: state
-      entity\_id: device\_tracker.myphone
-      from: 'Starbucks Route 9'
-    action:
-      - delay:
-          minutes: 5
-      - service: climate.set\_temperature
-        entity\_id: climate.living\_room
-        data:
-          temperature: 26
+    \begin{minted}[
+      gobble=4,
+      frame=single,
+      linenos
+    ]{yaml}
+        alias: Set Living Room AC to 26 C when leaving starbucks route 9
+        trigger:
+          platform: state
+          entity_id: device_tracker.myphone
+          from: 'Starbucks Route 9'
+        action:
+          - delay:
+              minutes: 5
+          - service: climate.set_temperature
+            entity_id: climate.living_room
+            data:
+              temperature: 26
+    \end{minted}
 \end{frame}
 
 \section{Conclusions}

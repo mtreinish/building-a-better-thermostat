@@ -9,6 +9,6 @@ Install texlive with most of the plugins via your distro
 
 to build just run::
 
-  % pdflatex building_a_better_thermostat.tex
+  % pdflatex -shell-escape building_a_better_thermostat.tex
   
 the output will be building_a_better_thermostat.pdf
