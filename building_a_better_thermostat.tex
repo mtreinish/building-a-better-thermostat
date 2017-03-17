@@ -193,15 +193,17 @@
     \frametitle{Setting up thermostat in Home Assistant}
     \begin{columns}[T]
         \begin{column}{.48\textwidth}
-%            \href{https://home-assistant.io/components/#climate}{https://home-assistant.io/components/#climate}
-            \centering
-            \includegraphics[width=\textwidth]{thermostat_components.png}
+            \begin{center}
+                \href{https://home-assistant.io/components/\#climate}{https://home-assistant.io/components/\#climate}
+                \includegraphics[width=\textwidth]{thermostat_components.png}
+            \end{center}
         \end{column}
         \begin{column}{.48\textwidth}
             \begin{itemize}
                 \item Many thermostat modules depending on hardware
                 \item My use case requires the generic thermostat component to
-                run it in software with a switch and sensor device
+                run it in software
+                \item In Home Assistant config define generic thermostat devices with a temperature sensor and switch pair
             \end{itemize}
         \end{column}
     \end{columns}
