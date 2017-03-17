@@ -69,7 +69,9 @@ def _get_local_min(first, sec, values):
     assert values[index] == min_value
     return index
 
-
+# This method is super buggy and will only ever work for the first cycle
+# this is because it will be off by one on each iteration of the loop.
+# But, it's good enough if you assume the first cycle is enough.
 def get_peak_to_peaks(cycle):
     peak_to_peaks = {}
     for sensor in cycle.keys():
