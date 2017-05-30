@@ -125,41 +125,58 @@
         \item 1 input temperature sensor
         \item 1 output for controlling heating and/or cooling system
     \end{itemize}
-\end{frame}
-
-\subsection{Living Room Hardware}
-\begin{frame}
-    \frametitle{Controlling the AC}
-    \begin{itemize}
-        \item Can't take apart the Air Conditioner (I don't own it)
-        \item No identifying information for the AC
-        \item Control via power (use a relay to turn on and off)
-        \item Wireless control ideal
-    \end{itemize}
-\end{frame}
+i\end{frame}
 
 \begin{frame}
-    \frametitle{Using Z-Wave}
-    \begin{columns}[T]
+    \frametitle{Constraints for controlling the AC}
+    \begin{columns}
         \begin{column}{.48\textwidth}
             \begin{itemize}
-                \item Setup a Z-Wave network with Aeotec Z-Stick and OpenZWave
-                \item Used Z-Wave outlet switch to control power to AC Units
-                \item The same Z-Wave network can be used to add additional sensors and control devices
+                \item Can't take apart the Air Conditioner (I don't own it)
+                \item No identifying information for the AC
+                \item Wireless control ideal
             \end{itemize}
         \end{column}
-        \begin{column}{.48\textwidth}       
+        \begin{column}{.48\textwidth}
+            \includegraphics[width=.75\textwidth]{AC_unit.jpeg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Solution for controlling the AC}
+    \begin{columns}
+        \begin{column}{.48\textwidth}
+            \begin{itemize}
+                \item Control via power (use a relay to turn on and off)
+                \item Used Z-Wave power switch
+            \end{itemize}
+        \end{column}
+        \begin{column}{.48\textwidth}
             \includegraphics[width=.8\textwidth]{aeotec-ss6.jpg}
         \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Sensing the Living Room Temperature}
+    \frametitle{What is Z-Wave}
+    \begin{columns}
+        \begin{column}{.48\textwidth}
+
+        \end{column}
+
+        \begin{column}{.48\textwidth}
+
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sensing the Temperature}
     \begin{columns}
         \begin{column}{.48\textwidth}
             \begin{itemize}
-                \item Wireless sensor 
+                \item Wireless sensor
                 \item Leverage Z-Wave network
                 \item Purchased a Z-Wave multi sensor which included temperature
             \end{itemize}
@@ -170,25 +187,24 @@
     \end{columns}
 \end{frame}
 
-\subsection{Bedroom Temperature Sensing}
+\subsection{Living Room Hardware}
 \begin{frame}
-    \frametitle{Bedroom Temperature Sensing}
+    \frametitle{Using Z-Wave}
     \begin{columns}[T]
         \begin{column}{.48\textwidth}
             \begin{itemize}
-                \item Track both bedroom and ``data`` closet temperatures
-                \item Leverage spare raspberry pi sitting in ``data'' closet
-                \item DS18B20 Dallas 1 wire temperature sensors used
+                \item Setup a Z-Wave network with Aeotec Z-Stick and OpenZWave
+                \item Used Z-Wave outlet switch to control power to AC Units
+                \item The same Z-Wave network can be used to add additional sensors and control devices
             \end{itemize}
         \end{column}
         \begin{column}{.48\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{raspi.jpg}
+            \includegraphics[width=.8\textwidth]{aeotec-ss6.jpg}
         \end{column}
     \end{columns}
 \end{frame}
 
-\subsection{Software}
+
 \begin{frame}
     \frametitle{Home Assistant}
     \begin{itemize}
@@ -200,7 +216,15 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Setting up thermostat in Home Assistant}
+    \frametitle{First Attempt at a thermostat}
+\end{frame}
+
+\begin{frame}
+    \frametitle{this doesn't work}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Setting up a proper thermostat in Home Assistant}
     \begin{columns}[T]
         \begin{column}{.48\textwidth}
             \begin{center}
@@ -227,6 +251,31 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Problems with this\dots}
+    \begin{center}
+    \includegraphics[height=.85\textheight]{floorplan.png}
+    \end{center}
+\end{frame}
+
+\subsection{Bedroom Temperature Sensing}
+\begin{frame}
+    \frametitle{Bedroom Temperature Sensing}
+    \begin{columns}[T]
+        \begin{column}{.48\textwidth}
+            \begin{itemize}
+                \item Track both bedroom and ``data`` closet temperatures
+                \item Leverage spare raspberry pi sitting in ``data'' closet
+                \item DS18B20 Dallas 1 wire temperature sensors used
+            \end{itemize}
+        \end{column}
+        \begin{column}{.48\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{raspi.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
     \frametitle{DallasMQTT}
     \begin{itemize}
         \item Framework for polling sensors and pushing results on MQTT
@@ -235,8 +284,6 @@
         \item Written in python
     \end{itemize}
 \end{frame}
-
-\section{Initial Issues}
 
 \begin{frame}
     \frametitle{Short Cycle Time}
