@@ -125,7 +125,7 @@
         \item 1 input temperature sensor
         \item 1 output for controlling heating and/or cooling system
     \end{itemize}
-i\end{frame}
+\end{frame}
 
 \begin{frame}
     \frametitle{Constraints for controlling the AC}
@@ -134,7 +134,7 @@ i\end{frame}
             \begin{itemize}
                 \item Can't take apart the Air Conditioner (I don't own it)
                 \item No identifying information for the AC
-                \item Wireless control ideal
+                \item Wireless control is ideal
             \end{itemize}
         \end{column}
         \begin{column}{.48\textwidth}
@@ -149,7 +149,8 @@ i\end{frame}
         \begin{column}{.48\textwidth}
             \begin{itemize}
                 \item Control via power (use a relay to turn on and off)
-                \item Used Z-Wave power switch
+                \item Measured current draw with clamp meter
+                \item Purchased a Z-Wave power switch
             \end{itemize}
         \end{column}
         \begin{column}{.48\textwidth}
@@ -162,9 +163,13 @@ i\end{frame}
     \frametitle{What is Z-Wave}
     \begin{columns}
         \begin{column}{.48\textwidth}
-
+            \begin{itemize}
+                \item Low power mess network for sensors and devices
+                \item Licensed from
+                \item Open Software API and protocol docs
+                \item Hundreds of available devices
+            \end{itemize}
         \end{column}
-
         \begin{column}{.48\textwidth}
 
         \end{column}
@@ -177,7 +182,7 @@ i\end{frame}
         \begin{column}{.48\textwidth}
             \begin{itemize}
                 \item Wireless sensor
-                \item Leverage Z-Wave network
+                \item Leverage the new Z-Wave network
                 \item Purchased a Z-Wave multi sensor which included temperature
             \end{itemize}
         \end{column}
@@ -203,7 +208,6 @@ i\end{frame}
         \end{column}
     \end{columns}
 \end{frame}
-
 
 \begin{frame}
     \frametitle{Home Assistant}
@@ -244,24 +248,31 @@ i\end{frame}
 \end{frame}
 
 \begin{frame}
-    \frametitle{this doesn't work}
+    \frametitle{Issues with this approach}
+    \begin{itemize}
+        \item Requires writing a separate rule for ever possible condition
+        \item Some trigger rules were edge triggered
+        \item Switching became unreliable
+        \item Adjusting the set point required a configuration update
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Setting up a proper thermostat in Home Assistant}
+    \frametitle{Setting up a thermostat device in Home Assistant}
     \begin{columns}[T]
         \begin{column}{.48\textwidth}
             \begin{center}
                 \href{https://home-assistant.io/components/\#climate}{https://home-assistant.io/components/\#climate}
-                \includegraphics[width=\textwidth]{thermostat_components.png}
+                \includegraphics[width=\textwidth]{thermostat_components_2.png}
             \end{center}
         \end{column}
         \begin{column}{.48\textwidth}
             \begin{itemize}
                 \item Many thermostat modules depending on hardware
-                \item My use case requires the generic thermostat component to
-                run it in software
-                \item In Home Assistant config define generic thermostat devices with a temperature sensor and switch pair
+                \item The generic thermostat component exists to run it in
+                    software
+                \item In the component configuration define a generic thermostat
+                    devices with a temperature sensor and switch
             \end{itemize}
         \end{column}
     \end{columns}
@@ -288,8 +299,8 @@ i\end{frame}
         \begin{column}{.48\textwidth}
             \begin{itemize}
                 \item Track both bedroom and ``data`` closet temperatures
-                \item Leverage spare raspberry pi sitting in ``data'' closet
-                \item DS18B20 Dallas 1 wire temperature sensors used
+                \item Leverage spare Raspberry Pi sitting in ``data'' closet
+                \item 2x DS18B20 Dallas 1 wire temperature sensors used
             \end{itemize}
         \end{column}
         \begin{column}{.48\textwidth}
@@ -297,6 +308,12 @@ i\end{frame}
             \includegraphics[width=\textwidth]{raspi.jpg}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Closet}
+    \centering
+    \includegraphics[width=.75\textwidth]{data_closet.jpg}
 \end{frame}
 
 \begin{frame}
@@ -371,7 +388,7 @@ i\end{frame}
             \begin{itemize}
                 \item Open Source iOS and Android app for reporting location over MQTT
                 \item Enables you to use either a private MQTT broker or public service
-                \item Home assistant component available
+                \item Home Assistant component available
             \end{itemize}
         \end{column}
         \begin{column}{.48\textwidth}
@@ -410,6 +427,8 @@ i\end{frame}
         \item More Sensors
         \item More automation
         \item Fix power usage collection
+        \item Additional Power monitoring
+        \item Adjust/tune switching parameters
     \end{itemize}
 \end{frame}
 
