@@ -1,0 +1,18 @@
+alias: Turn off Living Room AC when Home and below 25 C
+trigger:
+  platform: numeric_state
+  entity_id: sensor.aeotec_zw100_multisensor_6_temperature_4
+  below: 25
+condition:
+  - condition: state
+    entity_id: device_tracker.computertreker_sword_of_kahless
+    state: 'home'
+  - condition: state
+    entity_id: switch.aeotec_zw096_smart_switch_6_switch_2
+    state: 'on'
+    for:
+      minutes: 20
+action:
+  service: switch.turn_off
+  entity_id: switch.aeotec_zw096_smart_switch_6_switch_2
+
