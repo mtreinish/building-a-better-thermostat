@@ -196,8 +196,10 @@
     \begin{columns}[T]
         \begin{column}{.48\textwidth}
             \begin{itemize}
-                \item Setup a Z-Wave network with Aeotec Z-Stick and OpenZWave
-                \item Used Z-Wave outlet switch to control power to AC Units
+                \item Setup a Z-Wave network with Aeotec Z-Stick
+                \item Register each device on the network
+                \item Leverage OpenZWave to provide an API to interact with
+                    devices
             \end{itemize}
         \end{column}
         \begin{column}{.48\textwidth}
@@ -208,12 +210,19 @@
 
 \begin{frame}
     \frametitle{Home Assistant}
-    \begin{itemize}
-        \item Open Source Home Automation Platform
-        \item Written in Python 3
-        \item Has support for over 600 different components
-        \item Runs locally (with all data locally)
-    \end{itemize}
+    \begin{columns}
+        \begin{column}{.48\textwidth}
+            \begin{itemize}
+                \item Open Source Home Automation Platform
+                \item Written in Python 3
+                \item Has support for over 600 different components
+                \item Runs locally (with all data locally)
+            \end{itemize}
+        \end{column}
+        \begin{column}{.48\textwidth}
+            \includegraphics[width=\textwidth]{homeassistant.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}[fragile=singleslide]
