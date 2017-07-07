@@ -433,6 +433,59 @@
     \end{minted}
 \end{frame}
 
+\subsection{Environment Based Conditions}
+\begin{frame}
+    \frametitle{Environment based Rules}
+    \begin{itemize}
+        \item Home assistant has a lot of data about your environment
+        \item You can leverage this data to automate in interesting ways
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+    \frametitle{Turn the Air Conditioning off Based on the Outside Temperature}
+    \begin{minted}[
+      gobble=4,
+      frame=single,
+      linenos
+    ]{yaml}
+      alias: Turn off AC when it's cold outside
+      trigger:
+        platform: numeric_state
+        entity_id: sensor.pws_temp_c
+        below: 22.0
+      action:
+        service: thermostat.set_operation_mode
+        entity_id: thermostat.living_room
+        data:
+          operation_mode: off
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+    \frametitle{Increase TV volume when the AC turns on}
+    \begin{minted}[
+      gobble=4,
+      frame=single,
+      linenos
+    ]{yaml}
+      alias: Raise volume when AC turns on
+      trigger:
+        platform: state
+        entity_id: switch.aeotec_zw096_smart_switch_6_switch_2_0
+        to: 'on'
+      conditions:
+        - condition: state
+          entity_id: media_player.living_room_av_reciever
+          state: 'on'
+        - condition: template
+          value_template: '{{ states.media_player.reciever.volume_level < 0.7 }}'
+      action:
+        service: media_player.volume_up
+        entity_id: media_player.living_room_av_reciever
+    \end{minted}
+\end{frame}
+
 \section{Conclusions}
 \begin{frame}
     \frametitle{Future Work}
