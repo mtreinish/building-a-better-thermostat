@@ -13,6 +13,7 @@
 % Code snippits
 \usepackage{listings}
 \usepackage{minted}
+
 \usepackage{lmodern}
 % Color stuff
 \usepackage{color}
@@ -237,15 +238,12 @@
         fontsize=\small,
         linenos
     ]{yaml}
-      alias: Turn off Living Room AC when Home and below 25 C
+      alias: Turn off Living Room AC when below 25 C
       trigger:
         platform: numeric_state
         entity_id: sensor.aeotec_zw100_multisensor_6_temperature_4
         below: 25
       condition:
-        - condition: state
-          entity_id: device_tracker.computertreker_sword_of_kahless
-          state: 'home'
         - condition: state
           entity_id: switch.aeotec_zw096_smart_switch_6_switch_2
           state: 'on'
@@ -261,7 +259,7 @@
     \frametitle{Issues with this approach}
     \begin{itemize}
         \item Requires writing a separate rule for ever possible condition
-        \item Some trigger rules were edge triggered
+        \item Rules only triggered on state updates
         \item Switching became unreliable
         \item Adjusting the set point required a configuration update
     \end{itemize}
@@ -287,6 +285,29 @@
         \end{column}
     \end{columns}
 \end{frame}
+
+\begin{frame}[fragile=singleslide]
+    \frametitle{Configuring a software thermostat in Home Assistant}
+    \begin{minted}[
+        gobble=4,
+        frame=single,
+        fontsize=\small,
+        linenos
+    ]{yaml}
+      climate:
+        - name: Living Room
+          platform: generic_thermostat
+          heater: switch.aeotec_smart_switch_6_switch_5_0
+          target_sensor: sensor.aeotec_zw100_multisensor_6_temperature_4_1
+          min_temp: 20
+          max_temp: 35
+          target_temp: 25
+          ac_mode: True
+          min_cycle_duration:
+            minutes: 20
+    \end{minted}
+\end{frame}
+
 
 \begin{frame}
     \frametitle{Home Assistant Web Dashboard}
