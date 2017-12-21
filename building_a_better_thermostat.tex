@@ -207,7 +207,7 @@
             \begin{itemize}
                 \item Open Source Home Automation Platform
                 \item Written in Python 3
-                \item Has over 800 different components
+                \item Has over 900 different components
                 \item Runs locally (with all data stored locally)
                 \item Design point that it will always run on Raspberry Pi 3
             \end{itemize}
@@ -506,13 +506,28 @@
     \end{minted}
 \end{frame}
 
-\section{Conclusions}
-\begin{frame}
-    \frametitle{State of Apartment Automation}
-    \centering
-    \includegraphics[height=.95\textheight]{HA_apartment.png}
+\begin{frame}[fragile=singleslide]
+    \frametitle{Turn AC on when Closet Cloud starts}
+    \begin{minted}[
+      gobble=4,
+      frame=single,
+      linenos
+    ]{yaml}
+      alias: Turn AC on when altocumulus starts
+      trigger:
+        platform: state
+        entity_id: switch.altocumulus01
+        from: 'off'
+        to: 'on'
+        for:
+           minutes: 2
+      action:
+        service: climate.set_operation_mode
+        entity_id: climate.bedroom
+        data:
+          operation_mode: on
+    \end{minted}
 \end{frame}
-
 
 \begin{frame}
     \frametitle{Future Work}
