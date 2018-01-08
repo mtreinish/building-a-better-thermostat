@@ -92,23 +92,23 @@ short_df = pd.read_csv('short_cycle.csv', sep=';', na_values=['null'])
 short_cycle = _split_columns(short_df)
 short_cycle['Set Point'] = 25.0
 print("Before hysterisis fix:")
-cycle_times = get_peak_to_peaks(short_cycle)
-for sensor in cycle_times:
-    print("%s was on for %2f min. and off for %2f min." % (
-        sensor,
-        cycle_times[sensor]['on_time'].seconds / 60.0,
-        cycle_times[sensor]['off_time'].seconds / 60.0))
+#cycle_times = get_peak_to_peaks(short_cycle)
+#for sensor in cycle_times:
+#    print("%s was on for %2f min. and off for %2f min." % (
+#        sensor,
+#        cycle_times[sensor]['on_time'].seconds / 60.0,
+#        cycle_times[sensor]['off_time'].seconds / 60.0))
 
 long_df = pd.read_csv('long_cycle.csv', sep=';', na_values=['null'])
 long_cycle = _split_columns(long_df)
 long_cycle['Set Point'] = 25.0
-print("After hysterisis fix:")
-cycle_times = get_peak_to_peaks(long_cycle)
-for sensor in cycle_times:
-    print("%s was on for %2f min. and off for %2f min." % (
-        sensor,
-        cycle_times[sensor]['on_time'].seconds / 60.0,
-        cycle_times[sensor]['off_time'].seconds / 60.0))
+#print("After hysterisis fix:")
+#cycle_times = get_peak_to_peaks(long_cycle)
+#for sensor in cycle_times:
+#    print("%s was on for %2f min. and off for %2f min." % (
+#        sensor,
+#        cycle_times[sensor]['on_time'].seconds / 60.0,
+#        cycle_times[sensor]['off_time'].seconds / 60.0))
 
 make_graph('Fast Cycle Times', short_cycle, 'short_cycle.png')
 make_graph('Better Cycle Times', long_cycle, 'long_cycle.png')
