@@ -36,7 +36,7 @@ def make_graph(title, cycle, filename):
     ax.xaxis.set_minor_locator(ticker.MultipleLocator())
     ax.yaxis.grid(False)
     plt.legend()
-    plt.savefig(filename, dpi=900)
+    plt.savefig(filename, dpi=300)
 
 
 df = pd.read_csv('datacloset.csv', sep=';', na_values=['null'])
