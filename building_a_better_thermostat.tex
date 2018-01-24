@@ -172,7 +172,7 @@
                 \item Low power mesh network for sensors and devices
                 \item Licensed by Sigma Designs
                 \item Interoperability tested for all devices by Z-Wave Alliance
-                \item Software API and protocol docs in the public domain
+                \item Some API and protocol specs available for download
                 \item Over 1700 certified devices
                 \item OpenZwave is an Open Source library to interface with a Z-Wave network
                 \item Uses 908.4 and 916 MHz in the US
@@ -542,7 +542,8 @@
           entity_id: media_player.living_room_av_reciever
           state: 'on'
         - condition: template
-          value_template: '{{ states.media_player.reciever.volume_level < 0.7 }}'
+          value_template: >
+              '{{ states.media_player.reciever.volume_level < 0.7 }}'
       action:
         service: media_player.volume_up
         entity_id: media_player.living_room_av_reciever
@@ -573,12 +574,11 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Future Work}
+    \frametitle{Final Thoughts}
     \begin{itemize}
-        \item More Sensors
-        \item More automation
-        \item Additional Power monitoring
-        \item Adjust/tune switching parameters
+        \item I need more sensors and devices
+        \item I need to come up with more automations
+        \item You \textbf{can} do home automation sanely
     \end{itemize}
 \end{frame}
 
