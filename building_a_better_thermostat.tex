@@ -264,12 +264,6 @@
         platform: numeric_state
         entity_id: sensor.aeotec_zw100_multisensor_6_temperature_4
         below: 25
-      condition:
-        - condition: state
-          entity_id: switch.aeotec_zw096_smart_switch_6_switch_2
-          state: 'on'
-          for:
-            minutes: 20
       action:
         service: switch.turn_off
         entity_id: switch.aeotec_zw096_smart_switch_6_switch_2
@@ -410,8 +404,7 @@
         \includegraphics[height=.75\textheight]{short_cycle.png}
     \end{center}
     \begin{itemize}
-        \item Bedroom on for 8 min. and off for 4 min.
-        \item Living Room on for 4 min. off for 2 min.
+        \item Air conditioner on for 8 min. and off for 4 min.
     \end{itemize}
 \end{frame}
 
@@ -422,7 +415,7 @@
     \end{center}
     \begin{itemize}
         \item Bedroom on for 20 min. and off for 21 min.
-        \item Living Room on for 17 min. off for 29 min.
+        \item Living Room on for 20 min. off for 29 min.
     \end{itemize}
 \end{frame}
 
